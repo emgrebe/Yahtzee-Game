@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    height: 100vh;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3em;
+    text-decoration: underline;
+}
+
+p {
+    font-size: .5em;
+    margin-top: 0;
+}
+
+h1, button {
+    font-weight: 700;
+}
+
+button {
+    margin-bottom: 20px;
+    width: 7em;
+    height: 2em;
+    font-size: 1em;
+    border-radius:  5px;
+    background-color:  silver;
+    color: teal;
+}
+
+button:hover {
+    background-color:  teal;
+    color: silver;
+}
+
+footer {
+    color: teal;
+}
+
+.value, .scoreboard, #box, #score {
+    border: 1px solid black;
+}
+
+.hdr, .scoreboard, .dice {
+    display: grid;
+    flex-direction: column;
+}
+
+.scoreboard {
+    grid-column: 1 / 3;
+    margin-top: 30px;
+    margin-left: 20px;
+    height: 46vw;
+    width: 30vh;
+}
+
+#score, #box2, #total, #bonus, #subtotal {
+    border: 2px solid black;
+}
+
+.top-score, .bottom-score, .total1, .total2 {
+    display: grid;
+}
+
+.total1 {
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+}
+
+.top-score {
+    grid-template: repeat(5, 1fr) / repeat(2, 1fr);
+}
+
+.bottom-score {
+    grid-template:  repeat(3, 1fr) / repeat(2, 1fr);
+}
+
+.total2 {
+    grid-template: repeat(1, 1fr) / repeat(2, 1fr);
+}
+
+.dice {
+    display: flex;
+
+}

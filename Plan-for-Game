@@ -1,0 +1,37 @@
+Game of Yahtzee
+    objects:
+        1. System creates a score sheet
+        2. Player rolls 5 dice
+                -each dice displays a value between 1 and 6
+        3. Player chooses to roll dice again or proceeds to step 4
+                -chooses to hold 0 or more dice
+                -rolls un-held dice
+                -goes to step 4 if they have rolled 3 times total
+        4.  System adds player's score to total game score
+
+    how to score:
+        ones-
+        twos-
+        threes-
+        fours-
+        fives-
+        sixes-
+        score-
+        small straight-
+        large straight-
+        3 of a kind-
+        4 of a kind-
+        full house-
+        yahtzee-
+         total score-
+
+         numer of rounds: 12
+         number of dice: 5
+         use checkboxes to hold dice
+         two rerolls allowed per round
+         roll button disabled after second turn
+         player must select scoring option(using radio buttons)
+         score of 0 is issued if dice do not satisfy the selected category
+         once scoring category selected, cant be used again(rule realized by disabling the previously selected radio buttons)
+         categories divided into two groups, and subtotal for each group is maintained as well as overall total
+         first group of categories has 35 pt bonus if subtotal exceeds 62pts

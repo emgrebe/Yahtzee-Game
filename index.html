@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script defer src="./js/main.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Yahtzee</title>
+</head>
+<body>
+    <div class='hdr'>
+    <h1>Yahtzee</h1>
+    <p>Welcome to Yahtzee! A single player dice game. The game 
+        consists of 12 rounds, with each round beginning with five dice
+        to roll. You are allowed two more rolls within the round before 
+        your turn is up. You can hold the dice by clicking the check 
+        boxes and then click on the "Roll Dice" button. Each round can 
+        be scored in only one of the categories below. One through 
+        Six can be scored by adding up the sum of the selected numbers.
+        If your total 'Top Score' (One through Six) is equal or more than 62pts,
+         then you receive a 35pt bonus. A Small Straight consists of 4 consecutive
+        faces and give 40pts. A Large Straight consists of 5 consecutive faces and 
+        give 30pts. For a Yahtzee, you must have all five of the same die faces to score the
+        50pts.<br/>Good luck and "May the odds be ever in your favor."</p>
+    </div>
+
+    <div class='scoreboard'>
+
+        <section class='top-score'>
+            <div class='value' id='one'>Ones: </div><div id='box'> </div>
+            <div class='value' id='two'>Twos: </div><div id='box'> </div>
+            <div class='value' id='three'>Threes: </div><div id='box'> </div>
+            <div class='value' id='four'>Fours: </div><div id='box'> </div>
+            <div class='value' id='five'>Fives: </div><div id='box'> </div>
+        </section>
+
+        <section class='total1' id='score'>
+            <div  id='total'>Total: </div><div id='box2'> </div>
+            <div  id='bonus'>Bonus: </div><div id='box2'> </div>
+        </section>
+
+        <section class='bottom-score'>
+            <div class='value' id='three-of-kind'>Three Of A Kind: </div><div id='box'> </div>
+            <div class='value' id='large-straight'>Large Straight: </div><div id='box'> </div>
+            <div class='value' id='yahtzee'>Yahtzee: </div><div id='box'> </div>
+        </section>
+
+        <section class='total2' id='score'>
+            <div id='subtotal'>Subtotal: </div><div id='box2'> </div>
+        </section>
+    </div>
+
+    <div class='dice'>
+        <div id='dice1'><img  src="images/dice1.png"/> </div>
+        <div id='dice2'><img  src="images/dice1.png"/> </div>
+        <div id='dice3'><img  src="images/dice1.png"/> </div>
+        <div id='dice4'><img  src="images/dice1.png"/> </div>
+    </div>
+        <button>Roll Dice</button>
+    
+        <footer class='clearfix'>
+                <p class='created'>Created by &hearts; by <span>Emily Landgrebe</span></p>
+        </footer>
+
+</body>
+
+</html>
