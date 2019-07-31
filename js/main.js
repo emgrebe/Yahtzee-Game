@@ -95,37 +95,13 @@ var turns = 3;
 /*----- event listeners -----*/ 
 rollDieButton.addEventListener('click', rollDie);
 
+
 /*----- functions -----*/
-var createBoard = function() {
-	for (var i = 0; i < dice.length; i++) {
-		var diceElement = document.createElement('img');
-		diceElement.setAttribute('src', 'images/dice1.png');
-		diceElement.setAttribute('data-id', i);
-		diceElement.addEventListener('click', rollDice);
-		document.getElementById('game-board').appendChild(cardElement);
-    }
-}
 
-var checkForMatch = function() {
-    if (dieInPlay.length ===2) {
-        if(dieInPlay[0] === dieInPlay[1]) {
 
-        }
-    }
-}
-
-var rollDice = function () {
-    var dieId = this.getAttribute('data-id');
-    this.setAttribute('src', faceDie[dieId].dieImage);
-    console.log('Player Rolled ' + faceDie[dieId].face)
-    console.log(faceDie[dieId].dieImage);
-    dieInPlay.push(faceDie[dieId].face);
-    checkForMatch();
-    rollCount++;
-}
-
-function getRandom(min, max) {
+function getRandomFace(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
 }
+
