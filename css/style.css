@@ -91,9 +91,14 @@ footer {
     grid-template: repeat(1, 1fr) / repeat(2, 1fr);
 }
 
-.dice {
+.die {
     display: flex;
     flex-wrap: wrap;
     grid-column: 2 / 3;
     grid-row:  2 / 3;
+}
+
+img {
+    height: 150px;
+    width: 150px;
 }
