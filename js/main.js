@@ -84,26 +84,10 @@ const yahtzee = [
     [6, 6, 6, 6]
 ]
 
-// Yahtzee = {
-		
-//     launch : 0,
-//     die : [],
-//     Combinations : [],
-//     pair : false,
-//     three_of_a_kind : false,
-//     yahtzee : false,
-//     large_straight : false,
-//     straight : 0,
-
-//     keptCombinations: [],
-
 /*----- app's state (variables) -----*/
 var min = 1;
 var max = 6;
 var turns = 3;
-
-
-
 
 /*----- cached element references -----*/
 
@@ -140,24 +124,8 @@ var rollDice = function () {
     rollCount++;
 }
 
-function findCombinations() {
-    for(var i = 0; i < 4; i++) {
-        Yahtzee.Combinations[Yahtzee.die[i]]++;
-        Yahtzee.straight = Yahtzee.straight | (1 << Yahtzee.die[i]);
-    }
-    for(var i = 0; i < 6; i++) {
-        var value = Yahtzee.Combinations[i];
-        switch(value) {
-
-        }
-    }
-}
-
-function roll(die) {
-    var rando = getRandom(max, min);
-    var spins = gteRandom(max, min);
-}
-
-function getRandom(max, min) {
-    return Math.floor(Math.random() * (max-min)) + min;
+function getRandom(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
 }
