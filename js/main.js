@@ -109,30 +109,36 @@ function rollDice() {
 
     })
     render()
-}
+};
 
 button.onclick = function() {
     rollDice();
-}
+};
 
 function render() {
 let dieContainer = document.querySelectorAll('.dice')
 if(dieContainer.length === 0){
-    for(var i = 0; i < die.length; i++) {
+    die.forEach((el, idx) => {
         let imgElement = document.createElement('img');
-        imgElement.setAttribute('src', 'images/dice1.png');
-        imgElement.setAttribute('id', i);
-        imgElement.setAttribute('class', 'dice')
+        imgElement.setAttribute('src', `images/dice${el}.png`);
+        imgElement.setAttribute('id', `${idx}`);
+        imgElement.setAttribute('class', 'dice');
         imgElement.addEventListener('click', die);
         document.querySelector('.die').appendChild(imgElement);
-        } 
-    } else {
-        for(var i = 0; i < die.length; i++) {
-
-        }  
-        console.log(dieContainer)
-        // imgElement.setAttribute('src', 'images/dice1.png')
-        }
-    }
+    })
+} else {
+    die.forEach((el, idx) => {
+        let indv = document.getElementById(`${idx}`);   
+        indv.setAttribute('src', `images/dice${el}.png`)
+    })
+}  
+};
 
 render()
+    // for(var i = 0; i < die.length; i++) {
+    //    
+    //     ;
+    //     let num = document.createAttribute('src');
+    //     num.value = 'images/dice' + `${num}` + '.png';
+    //     imgElement.setAttribute('src', num.value);
+        // imgElement.setAttribute('src', 'images/dice1.png')
