@@ -11,7 +11,7 @@
 <body>
     <div class='hdr'>
     <h1>Yahtzee</h1>
-    <p>Welcome to Yahtzee! A single player dice game. The game 
+    <p id='intro'>Welcome to Yahtzee! A single player dice game. The game 
         consists of 12 rounds, with each round beginning with five dice
         to roll. You are allowed two more rolls within the round before 
         your turn is up. You can hold the dice by clicking the check 
@@ -23,7 +23,7 @@
         faces and give 40pts. A Large Straight consists of 5 consecutive faces and 
         give 30pts. For a Yahtzee, you must have all five of the same die faces to score the
         50pts.<br/>Good luck and "May the odds be ever in your favor."</p>
-    </div>
+    </div> 
 
     <div class='scoreboard'>
         <section class='top-score'>
@@ -51,13 +51,14 @@
         </section>
     </div>
 
-    <div class='die'>
-        <div id='dice1' class='dice'></div>
-        <div id='dice2' class='dice'></div>
-        <div id='dice3' class='dice'></div>
-        <div id='dice4' class='dice'></div>
+    <div class='die'></div>
+        <div id='0' class='dice'></div></div>
+        <div id='1' class='dice'></div></div>
+        <div id='2' class='dice'></div></div>
+        <div id='3' class='dice'></div></div>
     </div>
-        <button class='button'>Roll Dice</button>
+    
+        <button id='rollButton'>Roll Dice</button>
     
         <footer>
                 <p class='created'>Created by &hearts; by <span>Emily Landgrebe</span></p>

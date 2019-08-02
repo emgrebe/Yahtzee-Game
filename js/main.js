@@ -1,29 +1,39 @@
 /*----- constants -----*/ 
-
+var button = document.getElementById('rollButton');
+var totalGames = 0;
+let die = [1, 1, 1, 1];
 const faces = 6; //min: 0; max:6;
-const rolls = 3; // 3 rolls if not all dice are held
-const rounds = 12;
 const min = 1; // min of the value of the faces
 const max = 6; // max of the value of the faces
-
+const heldValues = [false, false, false, false];
+const currentTurn = 0;
+const maxTurn = 12;
+const currentRoll = 0;
+const MAXROLLS = 3;
 const faceImg = [
     {
-        '1' : 'images/dice1.png'   
+        face: '1',
+        dieImage: 'images/dice1.png'   
     },
     {
-        '2': 'images/dice2.png'
+        face: '2',
+        dieImage: 'images/dice2.png'
     },
     {
-        '3': 'images/dice3.png'
+        face: '3',
+        dieImage: 'images/dice3.png'
     },
     {
-        '4': 'images/dice4.png'
+        face: '4',
+        dieImage: 'images/dice4.png'
     },
     {
-        '5': 'images/dice5.png'
+        face: '5',
+        dieImage: 'images/dice5.png'
     },
     {
-        '6': 'images/dice6.png'
+        face: '6',
+        dieImage: 'images/dice6.png'
     }
 ]
 
@@ -87,44 +97,59 @@ const yahtzee = [
 
 
 /*----- app's state (variables) -----*/
-let board, turn, dice;
+let board, turn;
 
 /*----- cached element references -----*/
 
 
 /*----- event listeners -----*/ 
-document.querySelector('div.die')
-.addEventListener('click', handleClick);
+
 
 
 /*----- functions -----*/
-init();
 
-function init() {
-    dice = [1, 1, 1, 1];
-    render();
+function dice() {
+    die.forEach((el, idx) => {
+        let num =  Math.floor(Math.random() * 6) + 1;
+        die[idx] = num
+      })
+   render()
 }
 
+button.onclick = function() {
+    dice()
+}
 
-const dice = document.querySelector('.dice');
-const roll = document.querySelector('.button');
-const rollDie = () => Math.floor(Math.random() * 6 + 1);
-const rollDice = () => {`<img  src="images/dice${rollDie()}.png">
-    <img  src="images/dice${rollDie()}.png">
-    <img  src="images/dice${rollDie()}.png">
-    <img  src="images/dice${rollDie()}.png">`};
-roll.onclick = () => dice.innerHTML = rollDice();
+function render() {
+    for(var i = 0; i < die.length; i++) {
+        let imgElement = document.createElement('img');
+        imgElement.setAttribute('src', 'images/dice1.png');
+        imgElement.setAttribute('data-id', i);
+        imgElement.addEventListener('click', die);
+        document.querySelector('.die').appendChild(imgElement);
+    }
+}
 
-function createScoreBoard()
-function createDice()
-function rollDice() // at random // disabled after second turn//
-function rollRemaining()
-function holdDice()
-function sumDice() // sum of dice value
-function updateScore() //updates top score, bottom score and total
-function selectScore() // using radio button// return 0 if select category isn't satisfied// once category 
-//selected, it can't be used again. rule realized by disabling the previously selected radio buttons
-function resetGame()
+render();
+
+
+function rollDice() {
+    var dieId = this.getAttribute('data-id');
+    this.setAttribute('src', die[dieId].dieImage);
+    console.log(die[dieId].dieImage)
+    rollCount++;
+}
+
+// function createScoreBoard()
+// function createDice()
+// function rollDice() // at random // disabled after second turn//
+// function rollRemaining()
+// function holdDice()
+// function sumDice() // sum of dice value
+// function updateScore() //updates top score, bottom score and total
+// function selectScore() // using radio button// return 0 if select category isn't satisfied// once category 
+// //selected, it can't be used again. rule realized by disabling the previously selected radio buttons
+// function resetGame()
 
 // function displayImage(number) {
 //     var die = document.getElementsByClassName('die');
