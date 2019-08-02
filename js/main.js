@@ -1,7 +1,6 @@
 /*----- constants -----*/ 
 var button = document.getElementById('rollButton');
 let die = [1, 1, 1, 1];
-const faces = 6; //min: 0; max:6;
 const min = 1; // min of the value of the faces
 const max = 6; // max of the value of the faces
 const maxRounds = 12;
@@ -105,51 +104,51 @@ let board, turn;
 
 
 /*----- functions -----*/
-function dice() {
+function rollDice() {
     die.forEach((el, idx) => {
         let num =  Math.floor(Math.random() * 6) + 1;
         die[idx] = num
         console.log(num);
       })
-   render()
+      render()
 }
+
 
 button.onclick = function() {
-    dice();
+    rollDice();
 }
 
+
 function render() {
-    for(var i = 0; i < die.length; i++) {
-        let imgElement = document.createElement('img');
-        imgElement.setAttribute('src', 'images/dice1.png');
-        imgElement.setAttribute('data-id', i);
-        imgElement.addEventListener('click', die);
-        document.querySelector('.die').appendChild(imgElement);
+    let dieContainer = document.querySelectorAll('.dice')
+    if(dieContainer.length === 0){
+        for(var i = 0; i < die.length; i++) {
+            let imgElement = document.createElement('img');
+            imgElement.setAttribute('src', 'images/dice1.png');
+            imgElement.setAttribute('id', i);
+            imgElement.setAttribute('class', 'dice')
+            imgElement.addEventListener('click', die);
+            document.querySelector('.die').appendChild(imgElement);
+        } 
+    } else {
+        for(var i = 0; i < die.length; i++){   
+        }
+
+        console.log(dieContainer)
+
+
+        // imgElement.setAttribute('src', 'images/dice1.png')
     }
 }
 
-render();
 
-// preload the six images first
-// var face0=new Image()
-// face0.src="d1.gif"
-// var face1=new Image()
-// face1.src="d2.gif"
-// var face2=new Image()
-// face2.src="d3.gif"
-// var face3=new Image()
-// face3.src="d4.gif"
-// var face4=new Image()
-// face4.src="d5.gif"
-// var face5=new Image()
-// face5.src="d6.gif"
-// </script>
+render()
 
 
-// <img src="d1.gif" name="mydice">
-// <form>
-// <input type="button" value="Throw dice!" onClick="throwdice()">
-// </form>
+
+
+
+
 // <script>
 // function throwdice(){
 // //create a random integer between 0 and 5
@@ -157,12 +156,6 @@ render();
 // document.images["mydice"].src=eval("face"+randomdice+".src")
 // }
 
-{/* // function rollDice() { */}
-//     var dieId = this.getAttribute('data-id');
-//     this.setAttribute('src', die[dieId].dieImage);
-//     console.log(die[dieId].dieImage)
-//     rollCount++;
-// }
 
 // function createScoreBoard()
 // function createDice()
