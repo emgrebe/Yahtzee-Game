@@ -4,6 +4,7 @@ let die = [1, 1, 1, 1];
 const maxRounds = 12;
 const currentRoll = 0;
 const MAXROLLS = 3;
+let arr = [];
 const faceImg = [
     {
         face: '1',
@@ -31,65 +32,65 @@ const faceImg = [
     }
 ]
 
-// const ones = [
-//     [1, 1 ], // 2
-//     [1, 1, 1],//3
-//     [1, 1, 1, 1] // 4
-// ]
+const ones = [
+    [1, 1 ], // 2
+    [1, 1, 1],//3
+    [1, 1, 1, 1] // 4
+]
     
-// const twos = [
-//     [2, 2], // 4
-//     [2, 2, 2], // 6
-//     [2, 2, 2, 2] // 8
-// ]
+const twos = [
+    [2, 2], // 4
+    [2, 2, 2], // 6
+    [2, 2, 2, 2] // 8
+]
         
-// const threes = [
-//     [3, 3], //  6
-//     [3, 3, 3], // 9
-//     [3, 3, 3, 3] //12
-// ]
+const threes = [
+    [3, 3], //  6
+    [3, 3, 3], // 9
+    [3, 3, 3, 3] //12
+]
             
-// const fours = [
-//     [4, 4], // 8
-//     [4, 4, 4], // 12
-//     [4, 4, 4, 4] // 16
-// ]
+const fours = [
+    [4, 4], // 8
+    [4, 4, 4], // 12
+    [4, 4, 4, 4] // 16
+]
                 
-// const fives = [
-//     [5, 5], // 10
-//     [5, 5, 5], // 15
-//     [5, 5, 5, 5] // 20
-// ]
+const fives = [
+    [5, 5], // 10
+    [5, 5, 5], // 15
+    [5, 5, 5, 5] // 20
+]
                     
-// const sixes = [
-//     [6, 6], // 12
-//     [6, 6, 6],// 18
-//     [6, 6, 6, 6] // 24
-// ]
+const sixes = [
+    [6, 6], // 12
+    [6, 6, 6],// 18
+    [6, 6, 6, 6] // 24
+]
                         
-// const threeOfAKind = [
-//     [1, 1, 1], // 3
-//     [2, 2, 2], // 6
-//     [3, 3, 3], // 9
-//     [4, 4, 4], // 12
-//     [5, 5, 5], //15
-//     [6, 6, 6], // 18
-// ]
+const threeOfAKind = [
+    [1, 1, 1], // 3
+    [2, 2, 2], // 6
+    [3, 3, 3], // 9
+    [4, 4, 4], // 12
+    [5, 5, 5], //15
+    [6, 6, 6], // 18
+]
 
-// const largeStraight = [
-//     [1, 2, 3, 4],
-//     [2, 3, 4, 5],
-//     [3, 4, 5, 6]
-// ] // score = 30
+const largeStraight = [
+    [1, 2, 3, 4],
+    [2, 3, 4, 5],
+    [3, 4, 5, 6]
+] // score = 30
     
-// const yahtzee = [
-//     [1, 1, 1, 1],
-//     [2, 2, 2, 2],
-//     [3, 3, 3, 3],
-//     [4, 4, 4, 4],
-//     [5, 5, 5, 5],
-//     [6, 6, 6, 6]
-// ] // score = 50
+const yahtzee = [
+    [1, 1, 1, 1],
+    [2, 2, 2, 2],
+    [3, 3, 3, 3],
+    [4, 4, 4, 4],
+    [5, 5, 5, 5],
+    [6, 6, 6, 6]
+] // score = 50
         
 /*----- app's state (variables) -----*/
 let board, scores;
@@ -105,8 +106,7 @@ function rollDice() {
     die.forEach((el, idx) => {
         let num =  Math.floor(Math.random() * 6) + 1;
         die[idx] = num
-        console.log(num);
-
+        arr.push(num);
     })
     render()
 };
@@ -116,8 +116,8 @@ button.onclick = function() {
 };
 
 function render() {
-let dieContainer = document.querySelectorAll('.dice')
-if(dieContainer.length === 0){
+    let dieContainer = document.querySelectorAll('.dice')
+    if(dieContainer.length === 0){
     die.forEach((el, idx) => {
         let imgElement = document.createElement('img');
         imgElement.setAttribute('src', `images/dice${el}.png`);
@@ -126,19 +126,23 @@ if(dieContainer.length === 0){
         imgElement.addEventListener('click', die);
         document.querySelector('.die').appendChild(imgElement);
     })
-} else {
-    die.forEach((el, idx) => {
+    } else {
+        die.forEach((el, idx) => {
         let indv = document.getElementById(`${idx}`);   
         indv.setAttribute('src', `images/dice${el}.png`)
-    })
-}  
+        })
+    }  
+ };
+    
+render();
+
+
+function sumArray() {
+    var sum = 0;
+    for(var i = 0; i < arr.length; i ++) {
+        sum += arr[i];
+    }
+    return [sum];
 };
 
-render()
-    // for(var i = 0; i < die.length; i++) {
-    //    
-    //     ;
-    //     let num = document.createAttribute('src');
-    //     num.value = 'images/dice' + `${num}` + '.png';
-    //     imgElement.setAttribute('src', num.value);
-        // imgElement.setAttribute('src', 'images/dice1.png')
+render();
