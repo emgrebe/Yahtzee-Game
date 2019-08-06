@@ -110,6 +110,15 @@ let board, scores;
 /*----- event listeners -----*/ 
 
 
+// let checkBox0 = document.getElementById('c-0')
+// let checkBox1 = document.getElementById('c-1')
+// let checkBox2 = document.getElementById('c-2')
+// let checkBox3 = document.getElementById('c-3')
+// console.log(checkBox1)
+
+let allEl = document.querySelectorAll('input')
+console.log(allEl)
+
 /*----- functions -----*/
 function rollDice() {
     die.forEach((el, idx) => {
@@ -119,19 +128,6 @@ function rollDice() {
         imgValue = num
         arr.push(imgValue)
     })
-
-    // let savedValues = die.map(faceImg => {
-    //     if(faceImg.isHolding === true) {
-    //         let imgval = faceImg[savedValues].face    
-    //         arr.push(face) = savedValues
-    //         arr = savedValues
-    //         return imgval
-    //     } else {
-    //         return;
-    //     }
-    // })
-    // console.log(savedValues)
-   
     sumArray()
     render()
 };
@@ -152,7 +148,8 @@ function render() {
             document.querySelector('.die').appendChild(imgElement);
             let inptBtn = document.createElement('input');
             inptBtn.setAttribute('type', 'checkbox')
-            inptBtn.setAttribute('id', 'chck')
+            inptBtn.setAttribute('class', 'chck')
+            inptBtn.setAttribute('id', `c-${idx}`)
             inptBtn.setAttribute('value', `${el}`)
             document.querySelector('.die').appendChild(inptBtn)
         })
@@ -161,10 +158,7 @@ function render() {
             let indv = document.getElementById(`${idx}`);   
             indv.setAttribute('src', `images/dice${el}.png`)
             indv.setAttribute('value', `${el}`)
-
-        //     let inputContainer = document.getElementById('input')
-        // inputContainer[el] = indv[el, idx]
-    console.log('hi')
+           
         })
     }  
  };
@@ -179,13 +173,17 @@ function sumArray() {
 
 render();
 
-let isHolding = document.querySelector('input')
-isHolding.addEventListener('click', function() {
-    toggleCheckbox()
-})
+let isHolding = document.querySelectorAll('input')
+isHolding.onclick =  function() {
+    check()
+}
 
-function toggleCheckbox() {
-    if(isHolding === false) {
-        console.log('hit')
+function check() {
+    if(isHolding = true) {       
+    }
+}
+
+function uncheck() {
+    if(isHolding = false) {
     }
 }
