@@ -1,4 +1,5 @@
 /*----- constants -----*/ 
+let inptBtn = document.createElement('input');
 const button = document.getElementById('rollButton');
 let die = [1, 1, 1, 1];
 const maxRounds = 12;
@@ -110,11 +111,11 @@ let board, scores;
 /*----- event listeners -----*/ 
 
 
-// let checkBox0 = document.getElementById('c-0')
-// let checkBox1 = document.getElementById('c-1')
-// let checkBox2 = document.getElementById('c-2')
-// let checkBox3 = document.getElementById('c-3')
-// console.log(checkBox1)
+let checkBox0 = document.getElementById('c-0')
+let checkBox1 = document.getElementById('c-1')
+let checkBox2 = document.getElementById('c-2')
+let checkBox3 = document.getElementById('c-3')
+console.log(checkBox1)
 
 let allEl = document.querySelectorAll('input')
 console.log(allEl)
@@ -146,13 +147,15 @@ function render() {
             imgElement.setAttribute('class', 'dice');
             imgElement.addEventListener('click', die);
             document.querySelector('.die').appendChild(imgElement);
-            let inptBtn = document.createElement('input');
+            // inptBtn.addEventListener('click', die)
+            inptBtn = document.createElement('input');
             inptBtn.setAttribute('type', 'checkbox')
             inptBtn.setAttribute('class', 'chck')
             inptBtn.setAttribute('id', `c-${idx}`)
             inptBtn.setAttribute('value', `${el}`)
             document.querySelector('.die').appendChild(inptBtn)
         })
+        console.log(inptBtn)
     } else {
         die.forEach((el, idx) => {
             let indv = document.getElementById(`${idx}`);   
