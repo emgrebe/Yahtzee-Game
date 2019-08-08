@@ -8,7 +8,6 @@ const MAXROLLS = 3
 let newDice = [] //all dice currently in play
 let selectedDice = []
 let sum = 0
-// make an array of objects
 //display round number
 let held = [false, false, false, false]
 const faceImg = [
@@ -37,8 +36,7 @@ const faceImg = [
         dieImage: 'images/dice6.png',
     }
 ]
-// console.log(faceImg)
-// console.log(faceImg[2].isHolding)
+
 const ones = [
     [1, 1 ], // 2
     [1, 1, 1],//3
@@ -102,18 +100,11 @@ const yahtzee = [
 /*----- app's state (variables) -----*/
 let board, scores;
 
-/*----- cached element references -----*/
-
-
-/*----- event listeners -----*/ 
-
-
 /*----- functions -----*/
 function rollDice() {
     dice.forEach((el, idx) => {
         let num =  Math.floor(Math.random() * 6) + 1
         let imgValue = faceImg[idx].face
-
         if(held[idx] === false) {
         dice[idx] = num
         imgValue = num
@@ -162,12 +153,9 @@ function render() {
  };
 
 function sumHeldDice() {
-    held.forEach((el, idx) => {
-        if (held[idx] === true) {
-            dice[idx] = faceImg[idx].face
+    selectedDice.forEach((el, idx) => {
+            sum += selectedDice[idx]
         document.getElementById('sub-result').innerHTML = sum
-    }
-})
+    })
+    sum = 0;
 }
-
-// make global count
