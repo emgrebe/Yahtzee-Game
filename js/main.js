@@ -1,7 +1,7 @@
 /*----- constants -----*/ 
 let holdBtn = document.createElement('input')
 const rollBtn = document.getElementById('rollButton')
-const resetBtn = document.getElementById('resetButton')
+const nextRoundBtn = document.getElementById('nextRoundButton')
 let dice = [1, 1, 1, 1]
 const maxRounds = 12
 let currentRound = 0
@@ -10,7 +10,6 @@ const MAXROLLS = 3
 let newDice = []
 let selectedDice = []
 let sum = 0
-//display round number
 let held = [false, false, false, false]
 const faceImg = [
     {
@@ -41,9 +40,9 @@ const faceImg = [
 
 const ones = [
     [1],
-    [1, 1 ], // 2
-    [1, 1, 1],//3
-    [1, 1, 1, 1] // 4
+    [1, 1 ], 
+    [1, 1, 1],
+    [1, 1, 1, 1]
 ]
     
 const twos = [
@@ -127,17 +126,19 @@ function rollDice() {
 
 rollBtn.onclick = function() {
     rollDice()
+    document.getElementById('rollsLeft').innerHTML = `Current Roll: ${currentRoll}`
 };
 
-function rollReset() {
-    currentRoll = 0
+function nextRound() {
+    currentRound < 12
     selectedDice = []
-    console.log('You started a new round!')
-}
-resetBtn.onclick = function() {
-    rollReset()
-    alert('You started a new round')
-}
+    currentRound++
+};
+
+nextRoundBtn.onclick = function() {
+    nextRound()
+    document.getElementById('currentRound').innerHTML = `Current Round: ${currentRound + 1}`
+};
 
 function render() {
     let diceContainer = document.querySelectorAll('.dice')
@@ -238,7 +239,7 @@ function Yahtzee() {
     for(var i = 0; i < selectedDice.length; i++) {
         if(selectedDice[i] == [i]){
             sum += selectedDice[i]
-            document.getElementById('total-result').innerHTML = sum
+            document.getElementById('yahtzee-result').innerHTML = sum
         }
     }
 }
