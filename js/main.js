@@ -1,11 +1,13 @@
 /*----- constants -----*/ 
 let holdBtn = document.createElement('input')
 const rollBtn = document.getElementById('rollButton')
+const resetBtn = document.getElementById('resetButton')
 let dice = [1, 1, 1, 1]
 const maxRounds = 12
+let currentRound = 0
 let currentRoll = 0
 const MAXROLLS = 3
-let newDice = [] //all dice currently in play
+let newDice = []
 let selectedDice = []
 let sum = 0
 //display round number
@@ -38,37 +40,42 @@ const faceImg = [
 ]
 
 const ones = [
-    [1]
+    [1],
     [1, 1 ], // 2
     [1, 1, 1],//3
     [1, 1, 1, 1] // 4
 ]
     
 const twos = [
+    [2],
     [2, 2], // 4
     [2, 2, 2], // 6
     [2, 2, 2, 2] // 8
 ]
         
 const threes = [
+    [3],
     [3, 3], //  6
     [3, 3, 3], // 9
     [3, 3, 3, 3] //12
 ]
             
 const fours = [
+    [4],
     [4, 4], // 8
     [4, 4, 4], // 12
     [4, 4, 4, 4] // 16
 ]
                 
 const fives = [
+    [5],
     [5, 5], // 10
     [5, 5, 5], // 15
     [5, 5, 5, 5] // 20
 ]
                     
 const sixes = [
+    [6],
     [6, 6], // 12
     [6, 6, 6],// 18
     [6, 6, 6, 6] // 24
@@ -106,14 +113,11 @@ function rollDice() {
     dice.forEach((el, idx) => {
         let num =  Math.floor(Math.random() * 6) + 1
         let imgValue = faceImg[idx].face
-        if(currentRoll <= 3) {
+        if(currentRoll < 3) {
         if(held[idx] === false) {
             dice[idx] = num
             imgValue = num
             newDice.push(imgValue)
-            } else {
-                upperScore()
-                rollReset()
             }
         }
     })
@@ -125,12 +129,15 @@ rollBtn.onclick = function() {
     rollDice()
 };
 
-function rollReset () {
-    currentRolls = 0;
-    for(var i = 0; i<4; i++) {
-        dice[i].innerHTML = 0;
-    }
-};
+function rollReset() {
+    currentRoll = 0
+    selectedDice = []
+    console.log('You started a new round!')
+}
+resetBtn.onclick = function() {
+    rollReset()
+    alert('You started a new round')
+}
 
 function render() {
     let diceContainer = document.querySelectorAll('.dice')
@@ -163,33 +170,75 @@ function render() {
     }  
  };
 
-function upperScore() {
-    selectedDice.forEach((el, idx) => {
-        if(selectedDice == 1){
-        sum += selectedDice[idx]
-        document.getElementById('one-result').innerHTML = sum
+function onesScore() {
+    for(var i = 0; i < selectedDice.length; i++) {
+        if(selectedDice[i] == 1) {
+            sum += selectedDice[i]
+            document.getElementById('one-result').innerHTML = sum
         }
-        if(selectedDice[idx] == 2) {
-            sum += selectedDice[idx]
+    } 
+    sum = 0
+};
+
+function twosScore() {
+    for(var i = 0; i < selectedDice.length; i++) {
+        if(selectedDice[i] == 2) {
+            sum += selectedDice[i]
             document.getElementById('two-result').innerHTML = sum
         }
-        if(selectedDice[idx] == 3){
-            sum += selectedDice[idx]
+    }
+    sum = 0;
+};
+
+function threesScore() {
+    for(var i = 0; i < selectedDice.length; i++) {
+        if(selectedDice[i] == 3){
+            sum += selectedDice[i]
             document.getElementById('three-result').innerHTML = sum
-            } 
-        if(selectedDice[idx] == 4){
-            sum += selectedDice[idx]
-            document.getElementById('four-result').innerHTML = sum
-            } 
-        if(selectedDice[idx] == 5){
-            sum += selectedDice[idx]
-            document.getElementById('five-result').innerHTML = sum
-            } 
-        if(selectedDice[idx] == 6){
-            sum += selectedDice[idx]
-            document.getElementById('six-result').innerHTML = sum
-            } 
-    })
+        }
+    }
     sum = 0
+};
+        
+function foursScore() {
+    for(var i = 0; i < selectedDice.length; i++) {
+        if(selectedDice[i] == 4){
+            sum += selectedDice[i]
+            document.getElementById('four-result').innerHTML = sum
+        }
+    }
+    sum = 0
+};
+
+function fivesScore() {
+    for(var i = 0; i < selectedDice.length; i++) {
+        if(selectedDice[i] == 5){
+            sum += selectedDice[i]
+            document.getElementById('five-result').innerHTML = sum
+        }
+    }
+    sum = 0
+};
+
+function sixesScore() {
+    for(var i = 0; i < selectedDice.length; i++) {
+        if(selectedDice[i] == 6){
+            sum += selectedDice[i]
+            document.getElementById('six-result').innerHTML = sum
+        }
+    } 
+    sum = 0
+};
+
+function sumUpperScore() {
+
 }
 
+function Yahtzee() {
+    for(var i = 0; i < selectedDice.length; i++) {
+        if(selectedDice[i] == [i]){
+            sum += selectedDice[i]
+            document.getElementById('total-result').innerHTML = sum
+        }
+    }
+}
