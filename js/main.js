@@ -8,9 +8,9 @@ const threeBox = document.getElementById('three-result')
 const fourBox = document.getElementById('four-result')
 const fiveBox = document.getElementById('five-result')
 const sixBox = document.getElementById('six-result')
-// const tokBox = document.getElementById('tok-result')
 const strtBox = document.getElementById('strt-result')
 const yahtzeeBox = document.getElementById('yahtzee-result')
+
 let dice = [1, 1, 1, 1]
 const maxRounds = 8
 let currentRound = 0
@@ -88,15 +88,6 @@ const sixes = [
     [6, 6, 6],
     [6, 6, 6, 6]
 ]
-                        
-// const tok = [
-//     [1, 1, 1],
-//     [2, 2, 2],
-//     [3, 3, 3], 
-//     [4, 4, 4], 
-//     [5, 5, 5], 
-//     [6, 6, 6]
-// ]
 
 const strt = [
     [1, 2, 3, 4],
@@ -140,8 +131,9 @@ rollBtn.onclick = function() {
 
 function nextRound() {
     currentRoll = 0
-    selectedDice = []
+    held = [false, false, false, false]
     currentRound++
+    render()
 };
 
 nextRoundBtn.onclick = function() {
@@ -265,27 +257,8 @@ sixBox.onclick = function() {
 };
 
 function upperTotal() {
-     let firstTotal = document.querySelectorAll('#box')
-     sum += firstTotal
-     document.getElementById('total-result').innerHTML = sum
-     if(sum >= 62) {
-         document.getElementById('bonus-result').innerHTML = 35
-     }
+     
 };
-
-// function tokScore() {
-//     for(var i = 0; i < selectedDice.length; i++) {
-//         if(selectedDice[i] = tok[i]) {
-//             sum += selectedDice[i]
-//             document.getElementById('tok-result').innerHTML = sum
-//         }
-//     }
-//     sum = 0
-// };
-
-// tokBox.onclick = function() {
-//     tokScore()
-// };
 
 function strtScore() {
     for(var i = 0; i < selectedDice.length; i++) {
