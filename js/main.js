@@ -2,8 +2,17 @@
 let holdBtn = document.createElement('input')
 const rollBtn = document.getElementById('rollButton')
 const nextRoundBtn = document.getElementById('nextRoundButton')
+const oneBox = document.getElementById('one-result')
+const twoBox = document.getElementById('two-result')
+const threeBox = document.getElementById('three-result')
+const fourBox = document.getElementById('four-result')
+const fiveBox = document.getElementById('five-result')
+const sixBox = document.getElementById('six-result')
+// const tokBox = document.getElementById('tok-result')
+const strtBox = document.getElementById('strt-result')
+const yahtzeeBox = document.getElementById('yahtzee-result')
 let dice = [1, 1, 1, 1]
-const maxRounds = 12
+const maxRounds = 8
 let currentRound = 0
 let currentRoll = 0
 const MAXROLLS = 3
@@ -47,53 +56,53 @@ const ones = [
     
 const twos = [
     [2],
-    [2, 2], // 4
-    [2, 2, 2], // 6
-    [2, 2, 2, 2] // 8
+    [2, 2],
+    [2, 2, 2],
+    [2, 2, 2, 2]
 ]
         
 const threes = [
     [3],
-    [3, 3], //  6
-    [3, 3, 3], // 9
-    [3, 3, 3, 3] //12
+    [3, 3],
+    [3, 3, 3],
+    [3, 3, 3, 3]
 ]
             
 const fours = [
     [4],
-    [4, 4], // 8
-    [4, 4, 4], // 12
-    [4, 4, 4, 4] // 16
+    [4, 4],
+    [4, 4, 4],
+    [4, 4, 4, 4]
 ]
                 
 const fives = [
     [5],
-    [5, 5], // 10
-    [5, 5, 5], // 15
-    [5, 5, 5, 5] // 20
+    [5, 5], 
+    [5, 5, 5],
+    [5, 5, 5, 5] 
 ]
                     
 const sixes = [
     [6],
-    [6, 6], // 12
-    [6, 6, 6],// 18
-    [6, 6, 6, 6] // 24
+    [6, 6],
+    [6, 6, 6],
+    [6, 6, 6, 6]
 ]
                         
-const threeOfAKind = [
-    [1, 1, 1], // 3
-    [2, 2, 2], // 6
-    [3, 3, 3], // 9
-    [4, 4, 4], // 12
-    [5, 5, 5], //15
-    [6, 6, 6], // 18
-]
+// const tok = [
+//     [1, 1, 1],
+//     [2, 2, 2],
+//     [3, 3, 3], 
+//     [4, 4, 4], 
+//     [5, 5, 5], 
+//     [6, 6, 6]
+// ]
 
-const largeStraight = [
+const strt = [
     [1, 2, 3, 4],
     [2, 3, 4, 5],
     [3, 4, 5, 6]
-] // score = 30
+]
     
 const yahtzee = [
     [1, 1, 1, 1],
@@ -102,7 +111,7 @@ const yahtzee = [
     [4, 4, 4, 4],
     [5, 5, 5, 5],
     [6, 6, 6, 6]
-] // score = 50
+]
         
 /*----- app's state (variables) -----*/
 let board, scores;
@@ -130,7 +139,7 @@ rollBtn.onclick = function() {
 };
 
 function nextRound() {
-    currentRound < 12
+    currentRoll = 0
     selectedDice = []
     currentRound++
 };
@@ -181,6 +190,10 @@ function onesScore() {
     sum = 0
 };
 
+oneBox.onclick = function() {
+    onesScore()
+};
+
 function twosScore() {
     for(var i = 0; i < selectedDice.length; i++) {
         if(selectedDice[i] == 2) {
@@ -191,6 +204,10 @@ function twosScore() {
     sum = 0;
 };
 
+twoBox.onclick = function() {
+    twosScore()
+};
+
 function threesScore() {
     for(var i = 0; i < selectedDice.length; i++) {
         if(selectedDice[i] == 3){
@@ -199,6 +216,10 @@ function threesScore() {
         }
     }
     sum = 0
+};
+
+threeBox.onclick = function() {
+    threesScore()
 };
         
 function foursScore() {
@@ -211,6 +232,10 @@ function foursScore() {
     sum = 0
 };
 
+fourBox.onclick = function() {
+    foursScore()
+};
+
 function fivesScore() {
     for(var i = 0; i < selectedDice.length; i++) {
         if(selectedDice[i] == 5){
@@ -219,6 +244,10 @@ function fivesScore() {
         }
     }
     sum = 0
+};
+
+fiveBox.onclick = function() {
+    fivesScore()
 };
 
 function sixesScore() {
@@ -231,15 +260,55 @@ function sixesScore() {
     sum = 0
 };
 
-function sumUpperScore() {
+sixBox.onclick = function() {
+    sixesScore()
+};
 
-}
+function upperTotal() {
+     let firstTotal = document.querySelectorAll('#box')
+     sum += firstTotal
+     document.getElementById('total-result').innerHTML = sum
+     if(sum >= 62) {
+         document.getElementById('bonus-result').innerHTML = 35
+     }
+};
 
-function Yahtzee() {
+// function tokScore() {
+//     for(var i = 0; i < selectedDice.length; i++) {
+//         if(selectedDice[i] = tok[i]) {
+//             sum += selectedDice[i]
+//             document.getElementById('tok-result').innerHTML = sum
+//         }
+//     }
+//     sum = 0
+// };
+
+// tokBox.onclick = function() {
+//     tokScore()
+// };
+
+function strtScore() {
     for(var i = 0; i < selectedDice.length; i++) {
-        if(selectedDice[i] == [i]){
-            sum += selectedDice[i]
-            document.getElementById('yahtzee-result').innerHTML = sum
+        if(selectedDice[i] = strt[i]){
+            total = 30
+            document.getElementById('strt-result').innerHTML = total
         }
     }
-}
+};
+
+strtBox.onclick = function() {
+    strtScore()
+};
+
+function yahtzeeScore() {
+    for(var i = 0; i < selectedDice.length; i++) {
+        if(selectedDice[i] = yahtzee[i]){
+            total = 50
+            document.getElementById('yahtzee-result').innerHTML = total
+        }
+    }
+};
+
+yahtzeeBox.onclick = function() {
+    yahtzeeScore()
+};
