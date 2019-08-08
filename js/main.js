@@ -192,3 +192,4 @@ function upperScore() {
     })
     sum = 0
 }
+
