@@ -1,16 +1,15 @@
 /*----- constants -----*/ 
-let checkBtn = document.createElement('input')
+let holdBtn = document.createElement('input')
 const rollBtn = document.getElementById('rollButton')
 let dice = [1, 1, 1, 1]
-const currentRound = 1
 const maxRounds = 12
 let currentRoll = 0
 const MAXROLLS = 3
-let newDice = []
-// make an array of objects
-//change names to be more descriptive
-//display round number
+let newDice = [] //all dice currently in play
+let selectedDice = []
 let sum = 0
+// make an array of objects
+//display round number
 let held = [false, false, false, false]
 const faceImg = [
     {
@@ -104,15 +103,9 @@ const yahtzee = [
 let board, scores;
 
 /*----- cached element references -----*/
-const resultEls = {
-    
-}
+
 
 /*----- event listeners -----*/ 
-// checkBtn.addEventListener('click', check)
-// checkBtn.addEventListener('change', (event) => {
-//     if(event.target.checked) {
-//         console.log('checked')
 
 
 /*----- functions -----*/
@@ -120,12 +113,16 @@ function rollDice() {
     dice.forEach((el, idx) => {
         let num =  Math.floor(Math.random() * 6) + 1
         let imgValue = faceImg[idx].face
+
+        if(held[idx] === false) {
         dice[idx] = num
         imgValue = num
         newDice.push(imgValue)
+        } else {
+            sumHeldDice()
+        }
     })
-    check()
-    sumArray()
+    currentRoll++
     render()
 };
 
@@ -142,69 +139,35 @@ function render() {
             imgElement.setAttribute('id', `${idx}`)
             imgElement.setAttribute('class', 'dice')
             document.querySelector('.die').appendChild(imgElement)
-            checkBtn = document.createElement('input')
-            checkBtn.setAttribute('type', 'checkbox')
-            checkBtn.setAttribute('class', 'chck')
-            checkBtn.setAttribute('id', `c-${idx}`)
-            checkBtn.setAttribute('value', `${el}`)
-            document.querySelector('.die').appendChild(checkBtn)
+            holdBtn = document.createElement('input')
+            holdBtn.setAttribute('type', 'button')
+            holdBtn.setAttribute('class', 'hold')
+            holdBtn.setAttribute('id', `c-${idx}`)
+            holdBtn.setAttribute('value', `${el}`)
+            holdBtn.addEventListener('click', function(evt) {
+                held[evt.target.id.replace('c-', '')] = true
+                selectedDice.push(dice[evt.target.id.replace('c-', '')])
+            })
+            document.querySelector('.die').appendChild(holdBtn)
         })
     } else {
         dice.forEach((el, idx) => {
             let indv = document.getElementById(`${idx}`)
             indv.setAttribute('src', `images/dice${el}.png`)
             indv.setAttribute('value', `${el}`)
-            let checkBtn = document.getElementById(`c-${idx}`)
-            checkBtn.setAttribute('value', `${el}`)
+            let holdBtn = document.getElementById(`c-${idx}`)
+            holdBtn.setAttribute('value', `${el}`)
         })
     }  
  };
 
-function sumArray() {
-    for(let i = 0; i < dice.length; i ++) {
-        sum += dice[i]
+function sumHeldDice() {
+    held.forEach((el, idx) => {
+        if (held[idx] === true) {
+            dice[idx] = faceImg[idx].face
+        document.getElementById('sub-result').innerHTML = sum
     }
-    document.getElementById('sub-result').innerText = sum
-    sum = 0;
-};
-
-render()
-
-function activeDice() {
-    let activeDice = document.querySelectorAll('dice')
-        currentDice = []
-        if(activeDice) {
-            for(var i = 0; i < hold.length; i++) {
-                currentDice.push(hold[i].getAttribute('value'))
-            }
-            return currentDice
-        } else {
-            return currentDice
-        }
-};
-
-function currentDice() {
-    let currentDice = document.querySelectorAll('dice')
-    return currentDice
+})
 }
 
-function check() {
-    dice.forEach((el, idx) => {
-        for(var i = 0; i < 4; i++) {
-            held[i] = document.getElementsByClassName('chck').checked
-            let checkbox = document.getElementById(`c-${idx}`)
-            checkbox.addEventListener('click', event)
-            checkbox.addEventListener('change', (event) => {
-                if(event.target.checked) {
-                    event.preventDefault()
-                }
-            })
-        }
-    })
-};        
-//reference rock paper scissors
-//add border to dice when clicked
-//click dice toggle it and call render
-//event.target.onclick
-//tagname property 
-//remove checkboxes
+// make global count
