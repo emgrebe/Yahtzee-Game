@@ -38,6 +38,7 @@ const faceImg = [
 ]
 
 const ones = [
+    [1]
     [1, 1 ], // 2
     [1, 1, 1],//3
     [1, 1, 1, 1] // 4
@@ -105,12 +106,15 @@ function rollDice() {
     dice.forEach((el, idx) => {
         let num =  Math.floor(Math.random() * 6) + 1
         let imgValue = faceImg[idx].face
+        if(currentRoll <= 3) {
         if(held[idx] === false) {
-        dice[idx] = num
-        imgValue = num
-        newDice.push(imgValue)
-        } else {
-            sumHeldDice()
+            dice[idx] = num
+            imgValue = num
+            newDice.push(imgValue)
+            } else {
+                upperScore()
+                rollReset()
+            }
         }
     })
     currentRoll++
@@ -119,6 +123,13 @@ function rollDice() {
 
 rollBtn.onclick = function() {
     rollDice()
+};
+
+function rollReset () {
+    currentRolls = 0;
+    for(var i = 0; i<4; i++) {
+        dice[i].innerHTML = 0;
+    }
 };
 
 function render() {
@@ -152,10 +163,32 @@ function render() {
     }  
  };
 
-function sumHeldDice() {
+function upperScore() {
     selectedDice.forEach((el, idx) => {
+        if(selectedDice == 1){
+        sum += selectedDice[idx]
+        document.getElementById('one-result').innerHTML = sum
+        }
+        if(selectedDice[idx] == 2) {
             sum += selectedDice[idx]
-        document.getElementById('sub-result').innerHTML = sum
+            document.getElementById('two-result').innerHTML = sum
+        }
+        if(selectedDice[idx] == 3){
+            sum += selectedDice[idx]
+            document.getElementById('three-result').innerHTML = sum
+            } 
+        if(selectedDice[idx] == 4){
+            sum += selectedDice[idx]
+            document.getElementById('four-result').innerHTML = sum
+            } 
+        if(selectedDice[idx] == 5){
+            sum += selectedDice[idx]
+            document.getElementById('five-result').innerHTML = sum
+            } 
+        if(selectedDice[idx] == 6){
+            sum += selectedDice[idx]
+            document.getElementById('six-result').innerHTML = sum
+            } 
     })
-    sum = 0;
+    sum = 0
 }
