@@ -288,8 +288,6 @@ function strtScore() {
             total = 30
             document.getElementById('strt-result').innerHTML = total
         }
-        console.table({selectedDice, length})
-        document.getElementById('strt-result').innerHTML= 0
     }
 };
 
