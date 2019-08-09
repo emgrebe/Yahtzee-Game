@@ -1,7 +1,7 @@
 # Yahtzee-Game
 
 ## Languages Used:
-####I made my Yahtzee Game by using HTML, CSS, and Javascript
+#### I made my Yahtzee Game by using HTML, CSS, and Javascript
 
 ![Opening Yahztee Look](https://i.imgur.com/DHAfOEW.jpg)
 
