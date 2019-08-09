@@ -8,9 +8,10 @@ const threeBox = document.getElementById('three-result')
 const fourBox = document.getElementById('four-result')
 const fiveBox = document.getElementById('five-result')
 const sixBox = document.getElementById('six-result')
-// const tokBox = document.getElementById('tok-result')
 const strtBox = document.getElementById('strt-result')
 const yahtzeeBox = document.getElementById('yahtzee-result')
+const totalBox = document.getElementById('sub-result')
+
 let dice = [1, 1, 1, 1]
 const maxRounds = 8
 let currentRound = 0
@@ -88,15 +89,6 @@ const sixes = [
     [6, 6, 6],
     [6, 6, 6, 6]
 ]
-                        
-// const tok = [
-//     [1, 1, 1],
-//     [2, 2, 2],
-//     [3, 3, 3], 
-//     [4, 4, 4], 
-//     [5, 5, 5], 
-//     [6, 6, 6]
-// ]
 
 const strt = [
     [1, 2, 3, 4],
@@ -140,8 +132,9 @@ rollBtn.onclick = function() {
 
 function nextRound() {
     currentRoll = 0
-    selectedDice = []
+    held = [false, false, false, false]
     currentRound++
+    render()
 };
 
 nextRoundBtn.onclick = function() {
@@ -181,7 +174,7 @@ function render() {
  };
 
 function onesScore() {
-    for(var i = 0; i < selectedDice.length; i++) {
+    for(let i = 0; i < selectedDice.length; i++) {
         if(selectedDice[i] == 1) {
             sum += selectedDice[i]
             document.getElementById('one-result').innerHTML = sum
@@ -192,10 +185,11 @@ function onesScore() {
 
 oneBox.onclick = function() {
     onesScore()
+    confetti.start(1200);
 };
 
 function twosScore() {
-    for(var i = 0; i < selectedDice.length; i++) {
+    for(let i = 0; i < selectedDice.length; i++) {
         if(selectedDice[i] == 2) {
             sum += selectedDice[i]
             document.getElementById('two-result').innerHTML = sum
@@ -206,10 +200,11 @@ function twosScore() {
 
 twoBox.onclick = function() {
     twosScore()
+    confetti.start(1200);
 };
 
 function threesScore() {
-    for(var i = 0; i < selectedDice.length; i++) {
+    for(let i = 0; i < selectedDice.length; i++) {
         if(selectedDice[i] == 3){
             sum += selectedDice[i]
             document.getElementById('three-result').innerHTML = sum
@@ -220,10 +215,11 @@ function threesScore() {
 
 threeBox.onclick = function() {
     threesScore()
+    confetti.start(1200);
 };
         
 function foursScore() {
-    for(var i = 0; i < selectedDice.length; i++) {
+    for(let i = 0; i < selectedDice.length; i++) {
         if(selectedDice[i] == 4){
             sum += selectedDice[i]
             document.getElementById('four-result').innerHTML = sum
@@ -234,10 +230,11 @@ function foursScore() {
 
 fourBox.onclick = function() {
     foursScore()
+    confetti.start(1200);
 };
 
 function fivesScore() {
-    for(var i = 0; i < selectedDice.length; i++) {
+    for(let i = 0; i < selectedDice.length; i++) {
         if(selectedDice[i] == 5){
             sum += selectedDice[i]
             document.getElementById('five-result').innerHTML = sum
@@ -248,10 +245,11 @@ function fivesScore() {
 
 fiveBox.onclick = function() {
     fivesScore()
+    confetti.start(1200);
 };
 
 function sixesScore() {
-    for(var i = 0; i < selectedDice.length; i++) {
+    for(let i = 0; i < selectedDice.length; i++) {
         if(selectedDice[i] == 6){
             sum += selectedDice[i]
             document.getElementById('six-result').innerHTML = sum
@@ -262,33 +260,30 @@ function sixesScore() {
 
 sixBox.onclick = function() {
     sixesScore()
+    confetti.start(1200);
 };
 
 function upperTotal() {
-     let firstTotal = document.querySelectorAll('#box')
-     sum += firstTotal
-     document.getElementById('total-result').innerHTML = sum
-     if(sum >= 62) {
-         document.getElementById('bonus-result').innerHTML = 35
-     }
-};
+    let allBoxes = document.getElementsByClassName('total')
+    for(let i = 0; i < allBoxes.length; i++) {
+        let currNum = parseInt(allBoxes[i].innerText)
+        if(isNaN(currNum)) {
+        currNum = 0
+        }   //todo check for NaN remember too that you must use a method to check for nan it doesnt work normally
+    console.table({currNum, sum })
+    sum += currNum;
+    totalBox.innerHTML = sum
+    }
+sum = 0
+}
 
-// function tokScore() {
-//     for(var i = 0; i < selectedDice.length; i++) {
-//         if(selectedDice[i] = tok[i]) {
-//             sum += selectedDice[i]
-//             document.getElementById('tok-result').innerHTML = sum
-//         }
-//     }
-//     sum = 0
-// };
-
-// tokBox.onclick = function() {
-//     tokScore()
-// };
+totalBox.onclick = function() {
+    upperTotal()
+    confetti.start(1200);
+}
 
 function strtScore() {
-    for(var i = 0; i < selectedDice.length; i++) {
+    for(let i = 0; i < selectedDice.length; i++) {
         if(selectedDice[i] = strt[i]){
             total = 30
             document.getElementById('strt-result').innerHTML = total
@@ -298,10 +293,11 @@ function strtScore() {
 
 strtBox.onclick = function() {
     strtScore()
+    confetti.start(1200);
 };
 
 function yahtzeeScore() {
-    for(var i = 0; i < selectedDice.length; i++) {
+    for(let i = 0; i < selectedDice.length; i++) {
         if(selectedDice[i] = yahtzee[i]){
             total = 50
             document.getElementById('yahtzee-result').innerHTML = total
@@ -311,4 +307,5 @@ function yahtzeeScore() {
 
 yahtzeeBox.onclick = function() {
     yahtzeeScore()
+    confetti.start(1200);
 };
