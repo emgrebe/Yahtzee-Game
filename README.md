@@ -18,5 +18,5 @@
 ### ~I would really like to improve upon the complexity of the game. With having a deadline, I wanted to make sure I had the basic setup for my game and make sure everything worked properly. 
 ### ~I would eventually like to add another die and add the upper total score, bonus, small straight, chance, three of a kind, and four of a kind.
 
-#### the link to my deployed game: https://github.com/emgrebe/Yahtzee-Game/tree/gh-pages
+#### the link to my deployed game: https://emgrebe.github.io/Yahtzee-Game/
 
