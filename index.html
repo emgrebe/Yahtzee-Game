@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script defer src="./js/main.js"></script>
+    <script src="js/confetti.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <title>Yahtzee</title>
 </head>
@@ -26,22 +27,22 @@
 
     <div class='scoreboard' id='scoreboard'>
         <section class='top-score'>
-            <div class='value' id='one'>Ones: </div><div class='box' id='one-result'> </div>
-            <div class='value' id='two'>Twos: </div><div class='box' id='two-result'> </div>
-            <div class='value' id='three'>Threes: </div><div class='box' id='three-result'> </div>
-            <div class='value' id='four'>Fours: </div><div class='box' id='four-result'> </div>
-            <div class='value' id='five'>Fives: </div><div class='box' id='five-result'> </div>
-            <div class='value' id='six'>Sixes: </div><div class='box' id='six-result'> </div>
+            <div class='value' id='one'>Ones: </div><div class='box total'  id='one-result'> </div>
+            <div class='value' id='two'>Twos: </div><div class='box total' id='two-result'> </div>
+            <div class='value' id='three'>Threes: </div><div class='box total' id='three-result'> </div>
+            <div class='value' id='four'>Fours: </div><div class='box total' id='four-result'> </div>
+            <div class='value' id='five'>Fives: </div><div class='box total' id='five-result'> </div>
+            <div class='value' id='six'>Sixes: </div><div class='box total' id='six-result'> </div>
         </section>
 
-        <section class='total1' id='score'>
-            <div class='value'  id='total'>Total: </div><div class='box2' id='total-result'> </div>
-            <div class='value' id='bonus'>Bonus: </div><div class='box2' id='bonus-result'> </div>
-        </section>
+        <!-- <section class='total1' id='score'> -->
+            <!-- <div class='value'  id='total'>Total: </div><div class='box2' id='total-result'> </div> -->
+            <!-- <div class='value' id='bonus'>Bonus: </div><div class='box2' id='bonus-result'> </div> -->
+        <!-- </section> -->
 
         <section class='bottom-score'>
-            <div class='value' id='strt'>Straight: </div><div class='box3' id='strt-result'> </div>
-            <div class='value' id='yahtzee'>Yahtzee: </div><div class='box3' id='yahtzee-result'> </div>
+            <div class='value' id='strt'>Straight: </div><div class='box3 total' id='strt-result'> </div>
+            <div class='value' id='yahtzee'>Yahtzee: </div><div class='box3 total' id='yahtzee-result'> </div>
         </section>
 
         <section class='total2' id='score'>
@@ -55,7 +56,7 @@
     <button class='round' id='nextRoundButton'>Next Round</button><span class='round' id='currentRound'>Current Round: 1</span>
     
     <footer>
-            <p class='created'>Created with &hearts; by <span>Emily Landgrebe (and kinda Chris)</span></p>
+            <p class='created'>Created with &hearts; by <span>Emily Landgrebe</span></p>
     </footer>
 
 </body>

@@ -53,7 +53,7 @@ button, #rollsLeft, #currentRound {
     margin-bottom: 20px;
     margin-left: 200px;
     padding: 10px 10px 10px 10px;
-    background-color: rgb(128, 189, 243);
+    background: linear-gradient(to left, #8464BC , #0471C8);
     color: black;
     font-size: 15px;
     font-weight: 700;
@@ -63,14 +63,13 @@ button, #rollsLeft, #currentRound {
 }
 
 button {
-    background-color:  silver;
-    color: teal;
+    background: linear-gradient(to left, #94C4A6, #12D3F9);
+    color: white;
     box-shadow: 0 8px 16px 0 black, 0 8px 16px 0 white;
 }
 
 button:hover {
-    background-color:  teal;
-    color: silver;
+    background: linear-gradient(to left, #8464BC , #0471C8);
     box-shadow: 0 8px 16px 0 white, 0 8px 16px 0 white;
 }
 
@@ -79,17 +78,18 @@ footer {
     grid-column: 2 / 4;
     justify-content: center;
     color:white;
-    background-color: black;
     font-weight: 800;
     letter-spacing: 1px;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
-.value, .box, .box2, .box3, .box4 {
+/* .box2 */
+.value, .box, .box3, .box4 {
     border: 1px solid white;
-    background-color: rgb(128, 189, 243);
+    background: linear-gradient(to left, #8464BC, #0471C8);
     font-weight: 700;
     font-size: 20px;
+    color: white;
 }
 
 .scoreboard {
@@ -98,26 +98,30 @@ footer {
     justify-content: center;
      grid-column: 2 / 3;
      grid-row: 2 / 3;
-    height: 450px;
+    height: 400px;
     margin-top: 50px;
     border-radius: 5px;
     opacity: 0.8;
 }
 
-#subtotal, .box2, .box4, #total, #bonus, #score {
+/* .box2, #total, #bonus*/
+#subtotal, .box4, #score {
     border: 2px solid lightgrey;
 }
 
-.top-score, .bottom-score, .total1, .total2 {
+/*  .total1 */
+.bottom-score, .total2, .top-score {
     display: grid;
 }
 
-.value, #subtotal, .box, .box2, .box3, .box4, #total, #bonus {
+/* .box2, #total, #bonus  */
+.value, #subtotal, .box, .box3, .box4{
     height: 40px;
+    width: 200px;
 }
-.total1 {
+/* .total1 {
     grid-template: repeat(2, 1fr) / repeat(2, 1fr);
-}
+}*/
 
 .top-score {
     grid-template: repeat(5, 1fr) / repeat(2, 1fr);
@@ -147,7 +151,8 @@ img {
     margin-top: 50px;
 }
 
-.box:hover, .box2:hover, .box3:hover, .box4:hover {
+/* box2:hover */
+.box:hover, .box3:hover, .box4:hover {
     border: 4px solid black;
 }
 
