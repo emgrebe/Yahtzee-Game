@@ -269,7 +269,7 @@ function upperTotal() {
         let currNum = parseInt(allBoxes[i].innerText)
         if(isNaN(currNum)) {
         currNum = 0
-        }   //todo check for NaN remember too that you must use a method to check for nan it doesnt work normally
+        }
     console.table({currNum, sum })
     sum += currNum;
     totalBox.innerHTML = sum
@@ -288,6 +288,8 @@ function strtScore() {
             total = 30
             document.getElementById('strt-result').innerHTML = total
         }
+        console.table({selectedDice, length})
+        document.getElementById('strt-result').innerHTML= 0
     }
 };
 
