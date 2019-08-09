@@ -93,11 +93,11 @@ footer {
 }
 
 .scoreboard {
-     display: grid;
+    display: grid;
     flex-direction: column;
     justify-content: center;
-     grid-column: 2 / 3;
-     grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
     height: 400px;
     margin-top: 50px;
     border-radius: 5px;
